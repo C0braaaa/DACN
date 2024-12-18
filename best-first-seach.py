@@ -3,24 +3,26 @@ from queue import PriorityQueue  # Sử dụng PriorityQueue cho hàng đợi ư
 # Đồ thị được biểu diễn dưới dạng dictionary
 # Mỗi đỉnh chứa danh sách các đỉnh kề và giá trị heuristic.
 graph = {
-    'A': [('B', 1), ('C', 3)],
-    'B': [('D', 2), ('E', 4)],
-    'C': [('F', 5)],
-    'D': [('G', 6)],
-    'E': [('G', 2)],
-    'F': [('G', 1)],
-    'G': []
+    'A': [('B', 30), ('C', 20)],
+    'B': [('E', 10), ('G', 10)],
+    'C': [('D', 25), ('E', 10)],
+    'D': [('F', 15)],
+    'E': [('F', 15), ('G', 10)],
+    'G': [('F', 15), ('H', 0)],
+    'F': [('H', 0)],
+    'H': [0]
 }
 
-# Heuristic của mỗi đỉnh đến đích
+# Heuristic của mỗi đỉnh đến đỉnh đích 'H'
 heuristic = {
-    'A': 7,
-    'B': 6,
-    'C': 5,
-    'D': 4,
-    'E': 3,
-    'F': 6,
-    'G': 0
+    'A': 40,
+    'B': 30,
+    'C': 20,
+    'D': 25,
+    'E': 10,
+    'F': 15,
+    'G': 10,
+    'H': 0
 }
 
 # Hàm Best-First Search
@@ -54,4 +56,4 @@ def best_first_search(graph, start, goal):
     print("Tìm kiếm thất bại!")
 
 # Gọi hàm Best-First Search để tìm đường từ A đến G.
-best_first_search(graph, 'A', 'G')
+best_first_search(graph, 'A', 'H')
